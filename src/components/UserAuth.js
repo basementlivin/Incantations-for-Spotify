@@ -11,6 +11,7 @@ export default function UserAuth(code) {
             code,
         })
         .then(res => {
+            console.log(res)
             setAccessToken(res.data.accessToken)
             setRefreshToken(res.data.refreshToken)
             setExpiresIn(res.data.expiresIn)
@@ -22,7 +23,25 @@ export default function UserAuth(code) {
     }, [code])
 
     useEffect(() => {
+        if (!refreshToken || !expiresIn) return
+        const interval = setInterval(() => {
+            axios
+            .post('http://localhost:4000/refresh', {
+                refreshToken,
+            })
+            .then(res => {
+                setAccessToken(res.data.accessToken)
+                setRefreshToken(res.data.refreshToken)
+                setExpiresIn(res.data.expiresIn)
+                window.history.pushState({}, null, '/')
+            })
+            .catch((err) => {
+                window.location = "/"
+                console.log(err)
+            })
+        }, (expiresIn - 60) * 1000)
 
+        return () => clearInterval(interval)
     }, [refreshToken, expiresIn])
 
     return accessToken
