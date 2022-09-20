@@ -20,8 +20,6 @@ export default function NavBar({accessToken}) {
         });
     }, [accessToken])
     
-    
-
  
     if(!currentUser) return
     return(
