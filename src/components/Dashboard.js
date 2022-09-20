@@ -1,5 +1,6 @@
 import React from 'react'
 import UserAuth from './UserAuth'
+import TrackSearchResult from './TrackSearchResult';
 import SpotifyWebApi from 'spotify-web-api-node';
 import {useState, useEffect} from 'react';
 
@@ -23,7 +24,9 @@ export default function Dashboard({code}) {
     if (!search) return setSearchResults([])
     if (!accessToken) return
 
+    let cancel = false
     spotifyApi.searchTracks(search).then(res => {
+      if (cancel) return
       setSearchResults(res.body.tracks.items.map(track => {
         const smallestAlbumImage = track.album.images.reduce(
           (smallest, image) => {
@@ -39,6 +42,7 @@ export default function Dashboard({code}) {
         }
       }))
     })
+    return () => cancel = true
   }, [search, accessToken])
 
     return (
@@ -55,6 +59,11 @@ export default function Dashboard({code}) {
             >
           </input>
       </form>
+      <div className="search-results-wrapper">
+        {searchResults.map(track => (
+          <TrackSearchResult track={track} key={track.uri} />
+        ))}
+      </div>
         <div className="dashboard-wrapper">
           <h1>User-specific content here, man.</h1>
         </div>
