@@ -2,6 +2,7 @@ import React from 'react'
 import UserAuth from './UserAuth'
 import TrackSearchResult from './TrackSearchResult';
 import Player from './Player';
+import NavBar from './NavBar';
 import SpotifyWebApi from 'spotify-web-api-node';
 import {useState, useEffect} from 'react';
 
@@ -53,6 +54,7 @@ export default function Dashboard({code}) {
 
     return (
       <>
+      <NavBar accessToken={accessToken} />
       <form 
         type="search"
         >
