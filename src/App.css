@@ -3,6 +3,22 @@ body {
 }
 
 .search-result {
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+.search-result-art {
   height: 64px;
-  width: 64px
+  width: 64px;
+}
+
+.search-result-track {
+
+}
+
+.search-result-artist {
+  
 }

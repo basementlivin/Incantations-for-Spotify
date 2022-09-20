@@ -1,6 +1,7 @@
 import React from 'react'
 import UserAuth from './UserAuth'
 import TrackSearchResult from './TrackSearchResult';
+import Player from './Player';
 import SpotifyWebApi from 'spotify-web-api-node';
 import {useState, useEffect} from 'react';
 
@@ -13,7 +14,12 @@ export default function Dashboard({code}) {
   const accessToken = UserAuth(code)
   const [search, setSearch] = useState("")
   const [searchResults, setSearchResults] = useState([])
-  console.log(searchResults)
+  const [playingTrack, setPlayingTrack] = useState()
+
+  function chooseTrack(track) {
+    setPlayingTrack(track)
+    setSearch("")
+  }
 
   useEffect(() => {
     if (!accessToken) return
@@ -61,23 +67,15 @@ export default function Dashboard({code}) {
       </form>
       <div className="search-results-wrapper">
         {searchResults.map(track => (
-          <TrackSearchResult track={track} key={track.uri} />
+          <TrackSearchResult track={track} key={track.uri} chooseTrack={chooseTrack} />
         ))}
       </div>
         <div className="dashboard-wrapper">
           <h1>User-specific content here, man.</h1>
         </div>
+        <div className="music-player-wrapper">
+          <Player accessToken={accessToken} trackUri={playingTrack?.uri} />
+        </div>
       </>
     )
-
-
-    return (
-        <div>
-          <h1>This is totally working</h1>
-          <div>
-            {accessToken}
-          </div>
-          
-        </div>
-  )
 }
