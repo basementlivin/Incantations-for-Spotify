@@ -7,13 +7,46 @@ const spotifyApi = new SpotifyWebApi({
   clientId: "de0242264777412ea8c3adc7e7c63029",
 })
 
-export default function Dashboard({code}) {
-    const accessToken = UserAuth(code)
 
-    useEffect(() => {
-      if (!accessToken) return
-      spotifyApi.setAccessToken(accessToken)
-    }, [accessToken])
+export default function Dashboard({code}) {
+  const accessToken = UserAuth(code)
+  const [search, setSearch] = useState("")
+  const [searchResults, setSearchResults] = useState([])
+
+  useEffect(() => {
+    if (!accessToken) return
+    spotifyApi.setAccessToken(accessToken)
+  }, [accessToken])
+
+  useEffect(() => {
+    if (!search) return setSearchResults([])
+    if (!accessToken) return
+
+    spotifyApi.searchTracks(search).then(res => {
+      console.log(res.body.tracks.items)
+    })
+  }, [search, accessToken])
+
+    return (
+      <>
+      <form 
+        type="search"
+        >
+          <input 
+            type="text" 
+            id="searchbar"
+            placeholder="Search for Artists, Songs, Playlists..." 
+            value={search}
+            onChange={e => setSearch(e.target.value)}
+            >
+          </input>
+      </form>
+        <div className="dashboard-wrapper">
+          <h1>User-specific content here, man.</h1>
+        </div>
+      </>
+    )
+
 
     return (
         <div>
