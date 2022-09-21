@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react';
 import SpotifyWebApi from 'spotify-web-api-node';
+import LogoutBtn from './LogoutBtn';
 
 export default function NavBar({accessToken}) {
     const [currentUser, setCurrentUser] = useState();
@@ -23,6 +24,9 @@ export default function NavBar({accessToken}) {
  
     if(!currentUser) return
     return(
-        <a href={currentUser.external_urls.spotify}>{currentUser.display_name}</a>
+        <nav>
+            <a href={currentUser.external_urls.spotify}>{currentUser.display_name}</a>
+            <LogoutBtn accessToken={accessToken}/>
+        </nav>
     )
 }

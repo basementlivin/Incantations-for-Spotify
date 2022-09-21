@@ -5,7 +5,6 @@ import Player from './Player';
 import NavBar from './NavBar';
 import SpotifyWebApi from 'spotify-web-api-node';
 import {useState, useEffect} from 'react';
-
 const spotifyApi = new SpotifyWebApi({
   clientId: "de0242264777412ea8c3adc7e7c63029",
 })
