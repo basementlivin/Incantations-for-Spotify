@@ -76,7 +76,10 @@ export default function Dashboard({code}) {
           <h1>User-specific content here, man.</h1>
         </div>
         <div className="music-player-wrapper">
-          <Player accessToken={accessToken} trackUri={playingTrack?.uri} />
+          <Player
+            accessToken={accessToken} 
+            trackUri={playingTrack?.uri}
+          />
         </div>
       </>
     )
