@@ -5,6 +5,7 @@ import SpotifyWebApi from 'spotify-web-api-node';
 export default function Incantations ({accessToken}) {
     const handleSubmit = ((e) => {
         e.preventDefault();
+        e.target.value.split(' ')
     })
     return (
         <>
