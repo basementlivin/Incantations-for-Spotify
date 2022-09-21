@@ -74,7 +74,7 @@ export default function Dashboard({code}) {
       </div>
         <div className="dashboard-wrapper">
           <div className="incantations-wrapper">
-            <Incantations />
+            <Incantations accessToken={accessToken}/>
           </div>
         </div>
         <div className="music-player-wrapper">
