@@ -1,10 +1,14 @@
 import React from 'react';
 import SpotifyWebApi from 'spotify-web-api-node';
 
-export default function Playlist ({accessToken}) {
+export default function Playlist ({accessToken, wordArray}) {
     return (
         <>
-        <h1> Playlist </h1>      
+        {/* {wordArray.map((word) => {
+            return(
+                <h1>{word}</h1>
+            )
+        })}       */}
         </>
     )
 
