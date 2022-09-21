@@ -3,6 +3,7 @@ import UserAuth from './UserAuth'
 import TrackSearchResult from './TrackSearchResult';
 import Player from './Player';
 import NavBar from './NavBar';
+import Incantations from './Incantations';
 import SpotifyWebApi from 'spotify-web-api-node';
 import {useState, useEffect} from 'react';
 const spotifyApi = new SpotifyWebApi({
@@ -72,7 +73,9 @@ export default function Dashboard({code}) {
         ))}
       </div>
         <div className="dashboard-wrapper">
-          <h1>User-specific content here, man.</h1>
+          <div className="incantations-wrapper">
+            <Incantations />
+          </div>
         </div>
         <div className="music-player-wrapper">
           <Player
