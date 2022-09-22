@@ -26,13 +26,10 @@ export default function Incantations ({accessToken}) {
         const incantation = {...form};
         let tracks = [];
         let officialTracks = [];
-<<<<<<< HEAD
-=======
         const reset = async () => {
             officialTracks = [];
             console.log('official tracks: ', officialTracks);
         }
->>>>>>> d529c369fbb758c922d674b0c86e751b6eeb6f8f
         let id = '';
         const originalIncantation = incantation.incantation.split(" ");
         const keyWords = removeStopwords(originalIncantation, [...eng, ...nob, ...spa, ...por, ...fra, ...deu, ...nld, ...swe, ...fin, ...dan, ...ita, ...afr, ...jpn, ...kor, ...vie, ...zho, ...ara, ...kur, ...tur, ...hin, ...guj, ...panGu]);
