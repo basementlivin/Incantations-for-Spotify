@@ -17,7 +17,9 @@ export default function Incantations ({accessToken}) {
         const incantation = {...form};
         let tracks = [];
         let id = '';
+        // sw = require("stopword")
         const keyWords = incantation.incantation.split(" ");
+        // const keyWords = sw.removeStopwords(incantation.incantation, 'all')
         try {
             console.log(keyWords);
             spotifyApi = new SpotifyWebApi({
@@ -52,7 +54,7 @@ export default function Incantations ({accessToken}) {
         <>
         <h1>Incantations</h1> 
         <form onSubmit={handleSubmit}>
-            <input type="text" id="incantation" name="incantation" placeholder='incantation here' onChange={handleChange}/>
+            <input type="text" id="incantation" name="incantation" placeholder='incantation here' maxLength={100} onChange={handleChange}/>
             <input type="submit" value="Submit"/>
         </form>
              
