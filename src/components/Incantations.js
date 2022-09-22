@@ -3,6 +3,7 @@ import SpotifyWebApi from 'spotify-web-api-node';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 //import { Playlist } from 'react-spotify-api';
+import { removeStopwords, eng, nob, spa, por, fra, deu, nld, swe, fin, dan, ita, afr, jpn, kor, vie, zho, ara, kur, tur, hin, guj, panGu } from 'stopword'
 
 
 
@@ -23,8 +24,10 @@ export default function Incantations ({accessToken}) {
         let spotifyApi;
         const incantation = {...form};
         let tracks = [];
-        //let id = '';
-        const keyWords = incantation.incantation.split(" ");
+        let id = '';
+        const originalIncantation = incantation.incantation.split(" ");
+        const keyWords = removeStopwords(originalIncantation, [...eng, ...nob, ...spa, ...por, ...fra, ...deu, ...nld, ...swe, ...fin, ...dan, ...ita, ...afr, ...jpn, ...kor, ...vie, ...zho, ...ara, ...kur, ...tur, ...hin, ...guj, ...panGu]);
+        console.log(keyWords);
         try {
             spotifyApi = new SpotifyWebApi({
                 clientId: "de0242264777412ea8c3adc7e7c63029",
@@ -42,7 +45,7 @@ export default function Incantations ({accessToken}) {
         }
         try {
             keyWords.map(async (word) => {
-               let data = await spotifyApi.searchTracks(`${word}`);
+                let data = await spotifyApi.searchTracks(`${word}`);
                 for(let i = 0; i < data.body.tracks.items.length; i++) {
                 tracks.push(data.body.tracks.items[i].uri);
                 //playlistData.push(data.body.tracks.items[i]);
@@ -63,7 +66,7 @@ export default function Incantations ({accessToken}) {
         <>
         <h1>Incantations</h1> 
         <form onSubmit={handleSubmit}>
-            <input type="text" id="incantation" name="incantation" placeholder='incantation here' onChange={handleChange}/>
+            <input type="text" id="incantation" name="incantation" placeholder='incantation here' maxLength={100} onChange={handleChange}/>
             <input type="submit" value="Submit"/>
         </form>
         <Link to={'/playlists'}>{link}</Link>  
