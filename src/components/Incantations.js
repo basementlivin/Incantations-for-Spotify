@@ -24,6 +24,7 @@ export default function Incantations ({accessToken}) {
         let spotifyApi;
         const incantation = {...form};
         let tracks = [];
+        let officialTracks = [];
         let id = '';
         const originalIncantation = incantation.incantation.split(" ");
         const keyWords = removeStopwords(originalIncantation, [...eng, ...nob, ...spa, ...por, ...fra, ...deu, ...nld, ...swe, ...fin, ...dan, ...ita, ...afr, ...jpn, ...kor, ...vie, ...zho, ...ara, ...kur, ...tur, ...hin, ...guj, ...panGu]);
@@ -47,11 +48,16 @@ export default function Incantations ({accessToken}) {
             keyWords.map(async (word) => {
                 let data = await spotifyApi.searchTracks(`${word}`);
                 for(let i = 0; i < data.body.tracks.items.length; i++) {
-                tracks.push(data.body.tracks.items[i].uri);
+                    if(!(tracks.includes(data.body.tracks.items[i].artists[0].name)) && !(tracks.includes(data.body.tracks.items[i].name)) && !(tracks.includes(data.body.tracks.items[i].album.name)) && !(tracks.includes(data.body.tracks.items[i].uri))) {
+                        tracks.push(data.body.tracks.items[i]);
+                        officialTracks.push(data.body.tracks.items[i].uri);
+                        console.log(tracks)
+                    }
                 //playlistData.push(data.body.tracks.items[i]);
                }
-               spotifyApi.addTracksToPlaylist(id, tracks);
-        })
+               await spotifyApi.addTracksToPlaylist(id, officialTracks);
+               console.log(tracks[0])
+            })
         } catch(err) {
             console.log(err)
         }
