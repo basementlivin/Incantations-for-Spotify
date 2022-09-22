@@ -16,6 +16,7 @@ export default function Incantations ({accessToken}) {
     const handleChange = (e) => {
         setForm({...form, [e.target.name]: e.target.value})
     }
+    
 
     let id = '';
     //let playlistData = [];
@@ -25,6 +26,13 @@ export default function Incantations ({accessToken}) {
         const incantation = {...form};
         let tracks = [];
         let officialTracks = [];
+<<<<<<< HEAD
+=======
+        const reset = async () => {
+            officialTracks = [];
+            console.log('official tracks: ', officialTracks);
+        }
+>>>>>>> d529c369fbb758c922d674b0c86e751b6eeb6f8f
         let id = '';
         const originalIncantation = incantation.incantation.split(" ");
         const keyWords = removeStopwords(originalIncantation, [...eng, ...nob, ...spa, ...por, ...fra, ...deu, ...nld, ...swe, ...fin, ...dan, ...ita, ...afr, ...jpn, ...kor, ...vie, ...zho, ...ara, ...kur, ...tur, ...hin, ...guj, ...panGu]);
@@ -47,17 +55,17 @@ export default function Incantations ({accessToken}) {
         try {
             keyWords.map(async (word) => {
                 let data = await spotifyApi.searchTracks(`${word}`);
+                console.log("data: ", data);
                 for(let i = 0; i < data.body.tracks.items.length; i++) {
-                    if(!(tracks.includes(data.body.tracks.items[i].artists[0].name)) && !(tracks.includes(data.body.tracks.items[i].name)) && !(tracks.includes(data.body.tracks.items[i].album.name)) && !(tracks.includes(data.body.tracks.items[i].uri))) {
-                        tracks.push(data.body.tracks.items[i]);
+                    if(tracks.includes(data.body.tracks.items[i].artists[0].name) == false) {
+                        tracks.push(data.body.tracks.items[i].artists[0].name);
                         officialTracks.push(data.body.tracks.items[i].uri);
-                        console.log(tracks)
                     }
                 //playlistData.push(data.body.tracks.items[i]);
                }
-               await spotifyApi.addTracksToPlaylist(id, officialTracks);
-               console.log(tracks[0])
-            })
+               spotifyApi.addTracksToPlaylist(id, officialTracks);
+               reset();
+        })
         } catch(err) {
             console.log(err)
         }
