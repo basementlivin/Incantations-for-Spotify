@@ -1,6 +1,7 @@
 import React from 'react';
 import SpotifyWebApi from 'spotify-web-api-node';
 import { useState, useEffect } from 'react';
+import { removeStopwords, eng, nob, spa, por, fra, deu, nld, swe, fin, dan, ita, afr, jpn, kor, vie, zho, ara, kur, tur, hin, guj, panGu } from 'stopword'
 
 
 
@@ -17,9 +18,9 @@ export default function Incantations ({accessToken}) {
         const incantation = {...form};
         let tracks = [];
         let id = '';
-        // sw = require("stopword")
-        const keyWords = incantation.incantation.split(" ");
-        // const keyWords = sw.removeStopwords(incantation.incantation, 'all')
+        const originalIncantation = incantation.incantation.split(" ");
+        const keyWords = removeStopwords(originalIncantation, [...eng, ...nob, ...spa, ...por, ...fra, ...deu, ...nld, ...swe, ...fin, ...dan, ...ita, ...afr, ...jpn, ...kor, ...vie, ...zho, ...ara, ...kur, ...tur, ...hin, ...guj, ...panGu]);
+        console.log(keyWords);
         try {
             console.log(keyWords);
             spotifyApi = new SpotifyWebApi({
@@ -38,13 +39,13 @@ export default function Incantations ({accessToken}) {
         }
         try {
             keyWords.map(async (word) => {
-               let data = await spotifyApi.searchTracks(`${word}`);
+                let data = await spotifyApi.searchTracks(`${word}`);
                 for(let i = 0; i < data.body.tracks.items.length; i++) {
                 tracks.push(data.body.tracks.items[i].uri);
-               }
-               console.log('43: ', tracks);
-               spotifyApi.addTracksToPlaylist(id, tracks);
-               console.log(`${tracks[0]}`);
+                }
+                console.log('43: ', tracks);
+                spotifyApi.addTracksToPlaylist(id, tracks);
+                console.log(`${tracks[0]}`);
         })
         } catch(err) {
             console.log(err)
@@ -57,7 +58,7 @@ export default function Incantations ({accessToken}) {
             <input type="text" id="incantation" name="incantation" placeholder='incantation here' maxLength={100} onChange={handleChange}/>
             <input type="submit" value="Submit"/>
         </form>
-             
+        
         </>
     )
 
