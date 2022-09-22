@@ -2,8 +2,7 @@ import React from 'react';
 import SpotifyWebApi from 'spotify-web-api-node';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-//import { Playlist } from 'react-spotify-api';
-import { removeStopwords, eng, nob, spa, por, fra, deu, nld, swe, fin, dan, ita, afr, jpn, kor, vie, zho, ara, kur, tur, hin, guj, panGu } from 'stopword'
+import { removeStopwords, eng, nob, spa, por, fra, deu, nld, swe, fin, dan, ita, afr, jpn, kor, vie, zho, ara, kur, tur, hin, guj, panGu } from 'stopword';
 
 
 
@@ -49,8 +48,8 @@ export default function Incantations ({accessToken}) {
                 for(let i = 0; i < data.body.tracks.items.length; i++) {
                 tracks.push(data.body.tracks.items[i].uri);
                 //playlistData.push(data.body.tracks.items[i]);
-               }
-               spotifyApi.addTracksToPlaylist(id, tracks);
+                }
+                spotifyApi.addTracksToPlaylist(id, tracks);
         })
         } catch(err) {
             console.log(err)
