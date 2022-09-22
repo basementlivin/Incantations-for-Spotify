@@ -1,8 +1,8 @@
 import React from 'react';
 import SpotifyWebApi from 'spotify-web-api-node';
 import { useState, useEffect } from 'react';
-import Playlist from './Playlist';
 import { Link } from 'react-router-dom';
+//import { Playlist } from 'react-spotify-api';
 
 
 
@@ -16,13 +16,14 @@ export default function Incantations ({accessToken}) {
         setForm({...form, [e.target.name]: e.target.value})
     }
 
-    let playlistData = [];
+    let id = '';
+    //let playlistData = [];
     const handleSubmit = async (e, ) => {
         e.preventDefault();
         let spotifyApi;
         const incantation = {...form};
         let tracks = [];
-        let id = '';
+        //let id = '';
         const keyWords = incantation.incantation.split(" ");
         try {
             spotifyApi = new SpotifyWebApi({
@@ -57,6 +58,7 @@ export default function Incantations ({accessToken}) {
         //     console.log(err)
         // }
     }
+    console.log(id)
     return (
         <>
         <h1>Incantations</h1> 
@@ -65,6 +67,11 @@ export default function Incantations ({accessToken}) {
             <input type="submit" value="Submit"/>
         </form>
         <Link to={'/playlists'}>{link}</Link>  
+        {/* <Playlist id={id} >
+            {(playlist) => (
+                playlist ? <h1>{playlist.name}</h1> : null
+            )}
+        </Playlist> */}
         </>
     )
 
