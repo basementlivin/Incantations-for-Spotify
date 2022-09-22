@@ -16,6 +16,7 @@ export default function Incantations ({accessToken}) {
     const handleChange = (e) => {
         setForm({...form, [e.target.name]: e.target.value})
     }
+    
 
     let id = '';
     //let playlistData = [];
@@ -24,6 +25,11 @@ export default function Incantations ({accessToken}) {
         let spotifyApi;
         const incantation = {...form};
         let tracks = [];
+        let officialTracks = [];
+        const reset = async () => {
+            officialTracks = [];
+            console.log('official tracks: ', officialTracks);
+        }
         let id = '';
         const originalIncantation = incantation.incantation.split(" ");
         const keyWords = removeStopwords(originalIncantation, [...eng, ...nob, ...spa, ...por, ...fra, ...deu, ...nld, ...swe, ...fin, ...dan, ...ita, ...afr, ...jpn, ...kor, ...vie, ...zho, ...ara, ...kur, ...tur, ...hin, ...guj, ...panGu]);
@@ -46,11 +52,16 @@ export default function Incantations ({accessToken}) {
         try {
             keyWords.map(async (word) => {
                 let data = await spotifyApi.searchTracks(`${word}`);
+                console.log("data: ", data);
                 for(let i = 0; i < data.body.tracks.items.length; i++) {
-                tracks.push(data.body.tracks.items[i].uri);
+                    if(tracks.includes(data.body.tracks.items[i].artists[0].name) == false) {
+                        tracks.push(data.body.tracks.items[i].artists[0].name);
+                        officialTracks.push(data.body.tracks.items[i].uri);
+                    }
                 //playlistData.push(data.body.tracks.items[i]);
                }
-               spotifyApi.addTracksToPlaylist(id, tracks);
+               spotifyApi.addTracksToPlaylist(id, officialTracks);
+               reset();
         })
         } catch(err) {
             console.log(err)
