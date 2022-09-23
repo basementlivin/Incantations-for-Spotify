@@ -17,6 +17,8 @@ body {
 .landing-page {
   display: flex;
   flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
   background-color: black;
   height: 100vh;
 }
@@ -35,22 +37,51 @@ body {
   font-size: .8em;
   text-transform: uppercase;
   color: rgb(255, 255, 255);
+  padding-bottom: 10vh;
 }
 
-.login-button-wrapper {
-  display: flex;
-  flex-flow: column nowrap;
-  border: 1px solid red;
+.flying-cauldron {
+  width: 40vw;
+}
+
+.login-marquee {
+  font-size: 2em;
+  color: #fff;
+  font-family: "Helvetica", sans-serif;
+  height: 20px;
+  background-color: rgb(255, 183, 106);
+  position: fixed;
+  bottom: 0;
+  width: fit-content;
+  overflow: hidden;
+}
+/* nested div inside the container */
+.login-marquee div {
+  display: block;
+  width: 150%;
+  position: fixed;
+  bottom: 0;
+  overflow: hidden;
+  animation: marquee 10s linear infinite;
+}
+/* span with text */
+.login-marquee span {
+  display: inline-block;
+}
+/* keyframe */
+@keyframes marquee {
+  0% { left: 0; }
+  100% { left: -100%; }
 }
 
 .login-button {
   font-family: "Helvetica", sans-serif;
   font-weight: bold;
-  font-size: 2em;
+  font-size: 1.5em;
   text-transform: uppercase;
   text-decoration: none;
+  text-align: center;
   color: rgb(72, 246, 19);
-  margin-top: 100px;
 }
 
 .levitating-broom {
@@ -122,11 +153,11 @@ body {
 }
 
 .search-result-track {
-
+  text-align: center;
 }
 
 .search-result-artist {
-  
+  text-align: center;
 }
 
 .PlayerRSWP {

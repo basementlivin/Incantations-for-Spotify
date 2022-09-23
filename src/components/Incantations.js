@@ -2,13 +2,14 @@ import React from 'react';
 import SpotifyWebApi from 'spotify-web-api-node';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { removeStopwords, eng, nob, spa, por, fra, deu, nld, swe, fin, dan, ita, afr, jpn, kor, vie, zho, ara, kur, tur, hin, guj, panGu } from 'stopword';
+import Playlist from './Playlist'
+import { removeStopwords, eng, nob, spa, por, fra, deu, nld, swe, fin, dan, ita, afr, jpn, kor, vie, zho, ara, kur, tur, hin, guj, panGu } from 'stopword'
 
 
 
 export default function Incantations ({accessToken}) {
     const [form, setForm] = useState("");
-    //const [playlist, setPlaylist] = useState([]);
+    const [playlistId, setPlaylistId] = useState('');
     const [link, setLink] = useState('');
 
 
@@ -18,7 +19,6 @@ export default function Incantations ({accessToken}) {
     
 
     let id = '';
-    //let playlistData = [];
     const handleSubmit = async (e, ) => {
         e.preventDefault();
         let spotifyApi;
@@ -44,12 +44,7 @@ export default function Incantations ({accessToken}) {
                 'public': 'true',
             });
             id = data.body.id;
-
-            // TESTING ARTWORK POST REQUEST
-            // spotifyApi.uploadCustomPlaylistCoverImage(id, "https://freight.cargo.site/t/original/i/18c974f4ddb67fbc5a7d21dbbf8125c92bc1e6e27b0336623137d2de6f9181dc/incantations_playlist_artwork.jpg");
-            // console.log("Playlist art may have been uploaded!")
-            // END OF ARTWORK TEST
-
+            setPlaylistId(data.body.id);
             setLink(incantation.incantation);
         } catch(err) {
             console.log(err);
@@ -63,21 +58,15 @@ export default function Incantations ({accessToken}) {
                         tracks.push(data.body.tracks.items[i].artists[0].name);
                         officialTracks.push(data.body.tracks.items[i].uri);
                     }
-                //playlistData.push(data.body.tracks.items[i]);
-                }
-                spotifyApi.addTracksToPlaylist(id, officialTracks);
-                reset();
+               }
+               spotifyApi.addTracksToPlaylist(id, officialTracks);
+               reset();
         })
         } catch(err) {
             console.log(err)
         }
-        // try {
-        //     setPlaylist(playlistData);
-        // } catch(err) {
-        //     console.log(err)
-        // }
     }
-    console.log(id)
+    
     return (
         <>
         <h1>Incantations</h1> 
@@ -86,12 +75,7 @@ export default function Incantations ({accessToken}) {
             <input type="submit" value="Submit"/>
         </form>
         <Link to={'/playlists'}>{link}</Link>  
-        {/* <Playlist id={id} >
-            {(playlist) => (
-                playlist ? <h1>{playlist.name}</h1> : null
-            )}
-        </Playlist> */}
+        {/* <Playlist playlistId={playlistId} accessToken={accessToken}/> */}
         </>
     )
-
 }
