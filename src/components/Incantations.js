@@ -19,7 +19,7 @@ export default function Incantations ({accessToken}) {
     
 
     let id = '';
-    const handleSubmit = async (e, ) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         let spotifyApi;
         const incantation = {...form};
