@@ -6,12 +6,12 @@ import Playlist from './Playlist'
 import { removeStopwords, eng, nob, spa, por, fra, deu, nld, swe, fin, dan, ita, afr, jpn, kor, vie, zho, ara, kur, tur, hin, guj, panGu } from 'stopword'
 
 
-
 export default function Incantations ({accessToken}) {
     const [form, setForm] = useState("");
     const [playlistId, setPlaylistId] = useState('');
     const [link, setLink] = useState('');
-
+    const BASE_URL = process.env.REACT_APP_URL || "http://localhost:4000/";
+    
 
     const handleChange = (e) => {
         setForm({...form, [e.target.name]: e.target.value})
@@ -65,8 +65,33 @@ export default function Incantations ({accessToken}) {
         } catch(err) {
             console.log(err)
         }
+        // try {
+        //     setPlaylist(playlistData);
+        // } catch(err) {
+        //     console.log(err)
+        // }
+        console.log(id)
+        try {
+            const newPlaylist = {
+                incantation: incantation.incantation,
+                playlistId: id
+            }
+            console.log(newPlaylist)
+
+            const options = {
+                method: "POST",
+                headers: { 
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(newPlaylist)
+
+            }
+            const response = await fetch(BASE_URL, options)
+
+        } catch(err) {
+            console.log(err);
+        }
     }
-    
     return (
         <>
         <h1>Incantations</h1> 
