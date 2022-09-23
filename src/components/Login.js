@@ -9,16 +9,13 @@ export default function Login() {
       <div className="landing-page">
         <h1 className="landing-page-title">Incantations</h1>
         <h2 className="landing-page-subtitle">A playlist generator for Spotify</h2>
-            <div class="login-marquee">
-              <div>
-                <span>
-                  <a className="login-button" href={AUTH_URL}>  Login with Spotify  </a>
-                  <a className="login-button" href={AUTH_URL}>  Login with Spotify  </a>
-                  <a className="login-button" href={AUTH_URL}>  Login with Spotify  </a>
-                  <a className="login-button" href={AUTH_URL}>  Login with Spotify  </a>
-                </span>
-              </div>
+        <div class="login-marquee">
+          <div class="track">
+            <div class="content">
+              <a className="login-button" href={AUTH_URL}>  Login with Spotify  Login with Spotify  Login with Spotify  Login with Spotify  Login with Spotify  Login with Spotify  Login with Spotify  Login with Spotify  Login with Spotify  Login with Spotify  Login with Spotify  Login with Spotify</a>
             </div>
+          </div>
+        </div>
       </div>
       <FlyingCauldron />
     </>
