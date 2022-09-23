@@ -13,4 +13,7 @@ This app uses the Spotify API
 
 https://developer.spotify.com/documentation/web-api/
 
+The data responses from this API are too large to reproduce here. Information is linked here:
+https://developer.spotify.com/documentation/web-api/reference/#/operations/get-track
+
 ## Component Hierarchy
