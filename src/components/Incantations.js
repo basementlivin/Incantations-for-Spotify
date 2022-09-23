@@ -40,7 +40,7 @@ export default function Incantations ({accessToken}) {
                 accessToken: accessToken
             });
             const data = await spotifyApi.createPlaylist(`${incantation.incantation}`, {
-                'description': 'Created over a piping hot cauldron with the incantations for spotify app🪄', 
+                'description': 'Created over a piping hot cauldron with the Incantations for Spotify app 🪄', 
                 'public': 'true',
             });
             id = data.body.id;
@@ -58,9 +58,9 @@ export default function Incantations ({accessToken}) {
                         tracks.push(data.body.tracks.items[i].artists[0].name);
                         officialTracks.push(data.body.tracks.items[i].uri);
                     }
-               }
-               spotifyApi.addTracksToPlaylist(id, officialTracks);
-               reset();
+                }
+                spotifyApi.addTracksToPlaylist(id, officialTracks);
+                reset();
         })
         } catch(err) {
             console.log(err)
@@ -94,13 +94,15 @@ export default function Incantations ({accessToken}) {
     }
     return (
         <>
-        <h1>Incantations</h1> 
-        <form onSubmit={handleSubmit}>
-            <input type="text" id="incantation" name="incantation" placeholder='incantation here' maxLength={100} onChange={handleChange}/>
-            <input type="submit" value="Submit"/>
+        <div className="incantations-wrapper">
+        <h1 className="incantations-component-header">Summon your playlist</h1> 
+        <form className="incantations-form" onSubmit={handleSubmit}>
+            <input className="incantations-input" type="text" id="incantation" name="incantation" placeholder="MAGIC WORDS HERE" autoComplete="off" maxLength={100} onChange={handleChange}/>
+            <input className="incantations-submit-button" type="submit" value="STIR CAULDRON"/>
         </form>
         <Link to={'/playlists'}>{link}</Link>  
         {/* <Playlist playlistId={playlistId} accessToken={accessToken}/> */}
+        </div>
         </>
     )
 }

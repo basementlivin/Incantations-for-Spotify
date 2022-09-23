@@ -8,15 +8,9 @@ export default function TrackSearchResult({ track, chooseTrack }) {
     return (
         <>
             <div className="search-result" onClick={handlePlay}>
-                <div className="search-result-art">
-                    <img src={track.albumUrl} />
-                </div>
-                <div className="search-result-track">
-                    <p>{track.title}</p>
-                </div>
-                <div className="search-result-artist">
-                    <p>{track.artist}</p>
-                </div>
+                    <img className="search-result-art" src={track.albumUrl} />
+                    <p className="search-result-track">{track.title}</p>
+                    <p className="search-result-artist">{track.artist}</p>
             </div>
         </>
     )
