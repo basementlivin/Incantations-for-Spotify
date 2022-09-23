@@ -25,6 +25,9 @@ https://developer.spotify.com/documentation/web-api/
 The data responses from this API are too large to reproduce here. Information is linked here:
 https://developer.spotify.com/documentation/web-api/reference/#/operations/get-track
 
+## Component Hierarchy
+![Screen Shot 2022-09-23 at 9 59 33 AM](https://user-images.githubusercontent.com/109049703/191977905-e4800444-3220-4d3d-aeca-c9f12cf1935c.png)
+
 
 ## Future Features and Fixes
 <img width="1158" alt="INCANTATIONS_06" src="https://user-images.githubusercontent.com/109049703/191976372-89784d3f-c8ef-4851-a08e-55bae41969df.png">
