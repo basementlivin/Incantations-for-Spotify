@@ -12,13 +12,7 @@ export default function UserPlaylists({ accessToken }) {
 
   const [playlist, setPlaylist] = useState();
 
-  // useEffect(() => {
-  //   spotifyApi.getPlaylists()
-  // })
-
-
-        
-    return(
-        <h1>User Playlists</h1>
-    )
+  return(
+      <h1>User Playlists</h1>
+  )
 }

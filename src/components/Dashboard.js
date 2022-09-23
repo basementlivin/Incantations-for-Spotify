@@ -55,36 +55,38 @@ export default function Dashboard({code}) {
 
     return (
       <>
-      <NavBar accessToken={accessToken} />
-      <form 
-        type="search"
-        >
-          <input 
-            type="text" 
-            id="searchbar"
-            placeholder="Search for Artists, Songs, Playlists..." 
-            value={search}
-            onChange={e => setSearch(e.target.value)}
-            >
-          </input>
-      </form>
+      <div className="dashboard-wrapper">
+        <NavBar accessToken={accessToken} />
+        <form 
+          type="search"
+          >
+            <input
+              className="search-input"
+              type="text" 
+              id="searchbar"
+              placeholder="Search for Artists and Songs" 
+              autoComplete="off"
+              value={search}
+              onChange={e => setSearch(e.target.value)}
+              >
+            </input>
+        </form>
       <div className="search-results-wrapper">
         {searchResults.map(track => (
           <TrackSearchResult track={track} key={track.uri} chooseTrack={chooseTrack} />
         ))}
       </div>
-        <div className="dashboard-wrapper">
-          <div className="incantations-wrapper">
-            <Incantations accessToken={accessToken}/>
-          </div>
-        </div>
-        <div className="music-player-wrapper">
-          <Player
-            accessToken={accessToken} 
-            trackUri={playingTrack?.uri}
+      <div className="incantations-wrapper">
+        <Incantations accessToken={accessToken}/>
+      </div>
+      <div className="music-player-wrapper">
+        <Player
+          accessToken={accessToken} 
+          trackUri={playingTrack?.uri}
           />
-        </div>
-        <FlyingBroom />
+      </div>
+      <FlyingBroom />
+      </div>
       </>
     )
 }
