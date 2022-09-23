@@ -18,7 +18,7 @@ export default function Incantations ({accessToken}) {
     }
     
 
-    let id = '';
+    //let id = '';
     const handleSubmit = async (e) => {
         e.preventDefault();
         let spotifyApi;
@@ -52,7 +52,7 @@ export default function Incantations ({accessToken}) {
         try {
             keyWords.map(async (word) => {
                 let data = await spotifyApi.searchTracks(`${word}`);
-                console.log("data: ", data);
+                //console.log("data: ", data);
                 for(let i = 0; i < data.body.tracks.items.length; i++) {
                     if(tracks.includes(data.body.tracks.items[i].artists[0].name) == false) {
                         tracks.push(data.body.tracks.items[i].artists[0].name);
@@ -74,8 +74,8 @@ export default function Incantations ({accessToken}) {
             <input type="text" id="incantation" name="incantation" placeholder='incantation here' maxLength={100} onChange={handleChange}/>
             <input type="submit" value="Submit"/>
         </form>
-        <Link to={'/playlists'}>{link}</Link>  
-        {/* <Playlist playlistId={playlistId} accessToken={accessToken}/> */}
+        {/* <Link to={'/playlists'}>{link}</Link>   */}
+        <Playlist playlistId={playlistId} accessToken={accessToken}/>
         </>
     )
 }
