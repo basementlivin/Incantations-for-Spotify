@@ -6,7 +6,7 @@ Incantations is a Halloween-themed app that allows Spotify users to generate a p
 ## Wireframes
 
 ## User Stories
-The user—ideally a Halloween or Samhain enthusiast—lands on the app’s Homepage, where they are prompted to sign in with their Spotify credentials. BOOM: when they click on “Sign in with Spotify”, they’re redirected to an Authentication Page—with very trustworthy Spotify branding—where they log in. Once they log in with Spotify, they’re redirected to their Dashboard, which features a dynamic playlist generator called Incantations. The user is prompted to enter a spell or incantation (data type: string; max characters: XX), which will generate a playlist for them by matching song titles that contain keywords from the input string.
+The user—ideally a Halloween or Samhain enthusiast—lands on the app’s Homepage, where they are prompted to sign in with their Spotify credentials. BOOM: when they click on “Sign in with Spotify”, they’re redirected to an Authentication Page—with very trustworthy Spotify branding—where they log in. Once they log in with Spotify, they’re redirected to their Dashboard, which features a dynamic playlist generator called Incantations. The user is prompted to enter a spell or incantation which will generate a playlist for them by matching song titles that contain keywords from the input string.
 
 ## API 
 This app uses the Spotify API
