@@ -66,7 +66,7 @@ export default function Incantations ({accessToken}) {
             console.log(err)
         }
     }
-    if (!playlistId) return <h2>loading</h2>
+    
     return (
         <>
         <h1>Incantations</h1> 
@@ -74,8 +74,8 @@ export default function Incantations ({accessToken}) {
             <input type="text" id="incantation" name="incantation" placeholder='incantation here' maxLength={100} onChange={handleChange}/>
             <input type="submit" value="Submit"/>
         </form>
-        {/* <Link to={'/playlists'}>{link}</Link>   */}
-        <Playlist playlistId={playlistId} accessToken={accessToken}/>
+        <Link to={'/playlists'}>{link}</Link>  
+        {/* <Playlist playlistId={playlistId} accessToken={accessToken}/> */}
         </>
     )
 }
