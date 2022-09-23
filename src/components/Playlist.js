@@ -4,20 +4,31 @@ import SpotifyWebApi from 'spotify-web-api-node';
 
 export default function Playlist ({playlistId, accessToken}) {
     const [playlist, setPlaylist] = useState();
-
-    useEffect( async () => {
+    const [tracks, setTracks] = useState([])
+    const fetchPlaylist = async () => {
+        if(!playlistId) return null;
         const spotifyApi = new SpotifyWebApi({
             clientId: "de0242264777412ea8c3adc7e7c63029",
             clientSecret: "3e44db334b744416b587c80314f5745f",
             accessToken: accessToken
         });
-        await spotifyApi.getPlaylists(playlistId);
-        setPlaylist(playlist);
+        const data = await spotifyApi.getPlaylist(playlistId);
+        console.log('first data: ', data);
+        setPlaylist(data);
+        console.log('set playlist to: ', playlist);
+    }
+    useEffect(() => {
+        fetchPlaylist();
     }, [playlistId])
-    if(!playlistId) return <h1>loading</h1>
+
+    if(!accessToken) return null
     return (
+        playlist ? 
         <>
-            <h1>Playlist</h1>
+            <a href={`https://open.spotify.com/playlist/${playlist.body.id}`}>{playlist.body.name}</a>
         </>
+        : 
+        <h1>waiting for spell</h1>
+        
     )
 }
