@@ -18,7 +18,6 @@ export default function Incantations ({accessToken}) {
     }
     
 
-    //let id = '';
     const handleSubmit = async (e) => {
         e.preventDefault();
         let spotifyApi;
@@ -51,7 +50,6 @@ export default function Incantations ({accessToken}) {
         try {
             keyWords.map(async (word) => {
                 let data = await spotifyApi.searchTracks(`${word}`);
-                //console.log("data: ", data);
                 for(let i = 0; i < data.body.tracks.items.length; i++) {
                     if(tracks.includes(data.body.tracks.items[i].artists[0].name) == false) {
                         tracks.push(data.body.tracks.items[i].artists[0].name);
@@ -65,18 +63,11 @@ export default function Incantations ({accessToken}) {
         } catch(err) {
             console.log(err)
         }
-        // try {
-        //     setPlaylist(playlistData);
-        // } catch(err) {
-        //     console.log(err)
-        // }
-        console.log(id)
         try {
             const newPlaylist = {
                 incantation: incantation.incantation,
                 playlistId: id
             }
-            console.log(newPlaylist)
 
             const options = {
                 method: "POST",
@@ -93,15 +84,13 @@ export default function Incantations ({accessToken}) {
         }
     }
     return (
-        <>
         <div className="incantations-wrapper">
         <h1 className="incantations-component-header">Summon your playlist</h1> 
         <form className="incantations-form" onSubmit={handleSubmit}>
             <input className="incantations-input" type="text" id="incantation" name="incantation" placeholder="MAGIC WORDS HERE" autoComplete="off" maxLength={100} onChange={handleChange}/>
             <input className="incantations-submit-button" type="submit" value="STIR CAULDRON"/>
         </form>
-        {/* <Link to={'/playlists'}>{link}</Link>   */}
         <Playlist playlistId={playlistId} accessToken={accessToken}/>
-        </>
+        </div>
     )
 }
