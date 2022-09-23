@@ -37,6 +37,12 @@ body {
   color: rgb(255, 255, 255);
 }
 
+.login-button-wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  border: 1px solid red;
+}
+
 .login-button {
   font-family: "Helvetica", sans-serif;
   font-weight: bold;

@@ -8,7 +8,9 @@ export default function Login() {
       <div className="landing-page">
         <h1 className="landing-page-title">Incantations</h1>
         <h2 className="landing-page-subtitle">A playlist generator for Spotify</h2>
-        <a className="login-button" href={AUTH_URL}>Login with Spotify</a>
+          <div className="login-button-wrapper">
+            <a className="login-button" href={AUTH_URL}>Login with Spotify</a>
+          </div>
       </div>
     </>
   )

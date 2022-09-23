@@ -6,6 +6,8 @@ import NavBar from './NavBar';
 import Incantations from './Incantations';
 import SpotifyWebApi from 'spotify-web-api-node';
 import {useState, useEffect} from 'react';
+import { FlyingBroom } from './FlyingBroom';
+
 const spotifyApi = new SpotifyWebApi({
   clientId: "de0242264777412ea8c3adc7e7c63029",
 })
@@ -83,6 +85,7 @@ export default function Dashboard({code}) {
             trackUri={playingTrack?.uri}
           />
         </div>
+        <FlyingBroom />
       </>
     )
 }

@@ -1,6 +1,5 @@
 import React from 'react';
 import SpotifyWebApi from 'spotify-web-api-node';
-import { FlyingBroom } from './FlyingBroom';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { removeStopwords, eng, nob, spa, por, fra, deu, nld, swe, fin, dan, ita, afr, jpn, kor, vie, zho, ara, kur, tur, hin, guj, panGu } from 'stopword';
@@ -47,8 +46,8 @@ export default function Incantations ({accessToken}) {
             id = data.body.id;
 
             // TESTING ARTWORK POST REQUEST
-            spotifyApi.uploadCustomPlaylistCoverImage(id, "https://freight.cargo.site/t/original/i/18c974f4ddb67fbc5a7d21dbbf8125c92bc1e6e27b0336623137d2de6f9181dc/incantations_playlist_artwork.jpg");
-            console.log("Playlist art may have been uploaded!")
+            // spotifyApi.uploadCustomPlaylistCoverImage(id, "https://freight.cargo.site/t/original/i/18c974f4ddb67fbc5a7d21dbbf8125c92bc1e6e27b0336623137d2de6f9181dc/incantations_playlist_artwork.jpg");
+            // console.log("Playlist art may have been uploaded!")
             // END OF ARTWORK TEST
 
             setLink(incantation.incantation);
@@ -92,7 +91,6 @@ export default function Incantations ({accessToken}) {
                 playlist ? <h1>{playlist.name}</h1> : null
             )}
         </Playlist> */}
-        <FlyingBroom />
         </>
     )
 
