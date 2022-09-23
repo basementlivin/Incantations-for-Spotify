@@ -4,9 +4,18 @@
 Incantations is a Halloween-themed app that allows Spotify users to generate a playlist automatically by entering a group of “magic words” of their choosing. Users can also search for individual tracks and play them in the app.
 
 ## Wireframes
+<img width="1408" alt="INCANTATIONS_01" src="https://user-images.githubusercontent.com/109049703/191973781-706384ca-330b-4d8b-9791-7ada64478e6a.png">
+
+<img width="1408" alt="INCANTATIONS_02" src="https://user-images.githubusercontent.com/109049703/191974022-5c6faa71-d163-476d-bcaa-018b567e6182.png">
+
+<img width="1408" alt="INCANTATIONS_03" src="https://user-images.githubusercontent.com/109049703/191974079-8eeea4f5-f2e8-44f5-b25e-ec0113f41922.png">
+
+<img width="1408" alt="INCANTATIONS_04" src="https://user-images.githubusercontent.com/109049703/191974117-6d88a4dd-41a0-4122-9c81-46af600b4208.png">
+
+
 
 ## User Stories
-The user—ideally a Halloween or Samhain enthusiast—lands on the app’s Homepage, where they are prompted to sign in with their Spotify credentials. BOOM: when they click on “Sign in with Spotify”, they’re redirected to an Authentication Page—with very trustworthy Spotify branding—where they log in. Once they log in with Spotify, they’re redirected to their Dashboard, which features a dynamic playlist generator called Incantations. The user is prompted to enter a spell or incantation which will generate a playlist for them by matching song titles that contain keywords from the input string.
+The user—ideally a Halloween or Samhain enthusiast—lands on the app’s Homepage, where they are prompted to sign in with their Spotify credentials. When they click on “Sign in with Spotify”, they’re redirected to an Authentication Page where they log in. Once logged in, they’re redirected to their Dashboard, which features a dynamic playlist generator called Incantations. The user is prompted to enter a spell or incantation which will generate a playlist for them by matching song titles that contain keywords from the input string. Upon creation, the user's new Incantations playlist will appear in their profile as a public playlist: the spell they entered is now the title of the playlist and the playlist description reads: "Created over a piping hot cauldron with the Incantations for Spotify app 🪄".
 
 ## API 
 This app uses the Spotify API
@@ -16,4 +25,11 @@ https://developer.spotify.com/documentation/web-api/
 The data responses from this API are too large to reproduce here. Information is linked here:
 https://developer.spotify.com/documentation/web-api/reference/#/operations/get-track
 
-## Component Hierarchy
+
+## Future Features and Fixes
+<img width="1158" alt="INCANTATIONS_06" src="https://user-images.githubusercontent.com/109049703/191976372-89784d3f-c8ef-4851-a08e-55bae41969df.png">
+
+* We've created custom playlist cover art, which will be posted to each new playlist as it is created.
+* Add media queries and break points for a more responsive site design.
+* Create a component that shows users all other public Incantations playlists after they've created their own.
+* Allow users to stream their playlist in our app instead of having to redirect to Spotify.
