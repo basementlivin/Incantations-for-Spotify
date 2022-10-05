@@ -10,7 +10,7 @@ export default function Incantations ({accessToken}) {
     const [form, setForm] = useState("");
     const [playlistId, setPlaylistId] = useState('');
     const [link, setLink] = useState('');
-    const BASE_URL = process.env.REACT_APP_URL || "http://localhost:4000/";
+    const BASE_URL = process.env.REACT_APP_URL || "https://hallostream.herokuapp.com/";
     
 
     const handleChange = (e) => {
