@@ -10,7 +10,7 @@ export default function Incantations ({accessToken}) {
     const [form, setForm] = useState("");
     const [playlistId, setPlaylistId] = useState('');
     const [link, setLink] = useState('');
-    const BASE_URL = process.env.REACT_APP_URL || "http://localhost:4000/";
+    const BASE_URL = process.env.REACT_APP_URL || "https://hallostream.herokuapp.com/";
     
 
     const handleChange = (e) => {
@@ -93,7 +93,6 @@ export default function Incantations ({accessToken}) {
         }
     }
     return (
-        <>
         <div className="incantations-wrapper">
         <h1 className="incantations-component-header">Summon your playlist</h1> 
         <form className="incantations-form" onSubmit={handleSubmit}>
@@ -102,6 +101,6 @@ export default function Incantations ({accessToken}) {
         </form>
         {/* <Link to={'/playlists'}>{link}</Link>   */}
         <Playlist playlistId={playlistId} accessToken={accessToken}/>
-        </>
+        </div>
     )
 }
