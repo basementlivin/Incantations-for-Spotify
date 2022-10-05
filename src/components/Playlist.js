@@ -13,9 +13,7 @@ export default function Playlist ({playlistId, accessToken}) {
             accessToken: accessToken
         });
         const data = await spotifyApi.getPlaylist(playlistId);
-        console.log('first data: ', data);
         setPlaylist(data);
-        console.log('set playlist to: ', playlist);
     }
     useEffect(() => {
         fetchPlaylist();
