@@ -1,0 +1,58 @@
+.incantations-wrapper{
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+}
+
+.incantations-component-header {
+    font-family: "Trickster";
+    font-size: 5em;
+    color: rgb(255, 255, 255);
+}
+
+.incantations-form {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    gap: 3em;
+    height: 35vh;
+    width: 50vw;
+}
+
+.incantations-input {
+    font-family: "Helvetica", sans-serif;
+    font-weight: bold;
+    font-size: 1.8em;
+    text-align: center;
+    text-transform: uppercase;
+    color:rgb(72, 246, 19);
+    width: 50vw;
+    height: 15vh;
+    border: none;
+    background-color: black;
+    transition: background-color 1.5s ease-in-out;
+}
+
+.incantations-input:focus {
+    outline: none;
+}
+
+.incantations-input:hover {
+    background-color: white;
+    transition: 1.5s ease-in-out;
+}
+
+.incantations-input::placeholder {
+    color:rgb(72, 246, 19);
+}
+
+.incantations-submit-button {
+    font-family: "Helvetica", sans-serif;
+    font-weight: bold;
+    height: 7vh;
+    width: 45vw;
+    border-radius: 50%;
+    border: none;
+}  
