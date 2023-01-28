@@ -7,7 +7,7 @@ export default function UserAuth(code) {
     const [expiresIn, setExpiresIn] = useState()
 
     useEffect(() => {
-        axios.post('http://localhost:4000/login', {
+        axios.post('https://hallostream.herokuapp.com/login', {
             code,
         })
         .then(res => {
@@ -27,7 +27,7 @@ export default function UserAuth(code) {
         if (!refreshToken || !expiresIn) return
         const interval = setInterval(() => {
             axios
-            .post('http://localhost:4000/refresh', {
+            .post('https://hallostream.herokuapp.com/refresh', {
                 refreshToken,
             })
             .then(res => {
